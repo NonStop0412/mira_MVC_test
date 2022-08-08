@@ -2,18 +2,15 @@
 
 namespace App;
 
-use App\Controllers\AuthController;
 use App\Controllers\Factory\AuthControllerFactory;
 use App\Controllers\Factory\IndexControllerFactory;
 use App\Controllers\Factory\RegisterControllerFactory;
-use App\Controllers\Factory\TestControllerFactory;
 
 
 class Router
 {
     public const URL_MAP = [
         '/' => [IndexControllerFactory::class, 'indexAction'],
-        '/test-uri' => [TestControllerFactory::class, 'indexAction'],
         '/registration' => [RegisterControllerFactory::class, 'indexAction'],
         '/registration/check' => [RegisterControllerFactory::class, 'registration'],
         '/login' => [AuthControllerFactory::class, 'indexAction'],

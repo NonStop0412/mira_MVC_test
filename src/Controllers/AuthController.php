@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Models\Role;
 use App\Models\User;
-use App\View;
 
 class AuthController
 {
@@ -19,10 +18,7 @@ class AuthController
 
     public function indexAction()
     {
-        echo "I am in AuthController";
-
         $path = 'login';
-
         return $this->view->render($path);
     }
 
@@ -32,12 +28,11 @@ class AuthController
         $password = md5($_POST['password']);
 
         if ($this->userModel->loginUser($email, $password)) {
-            print_r('Authorize');
 			$user = $this->userModel->getUser($email);
             $_SESSION['user'] = $user;
             $_SESSION['role'] = Role::getRole($user['role_id']);
-            $path = 'index';
-            return $this->view->render($path);
+
+            return header("Location: /");
         }
             print_r('Error');
 

@@ -16,9 +16,8 @@ class User extends BaseModel
 
     public function getUser(string $email)
     {
-        $user = $this->findOneBy(['email' => $email]);
+        return $this->findOneBy(['email' => $email]);
 
-        return $user;
     }
 
     public function loginUser(string $email, string $password) : bool
